@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
-import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector';
+import {selectCartItems, selectCartTotal} from '../../store/cart/cart.selector';
 
 import {CheckoutContainer, CheckoutHeader, HeaderBlock, Total} from './checkout.styles'
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";

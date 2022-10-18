@@ -1,20 +1,20 @@
-import { CART_ACTION_TYPES } from "./cart.types";
-import { createAction } from "../../utils/reducer/reducer.utils";
+import {CART_ACTION_TYPES} from "./cart.types";
+import {createAction} from "../../utils/reducer/reducer.utils";
 
-export const setIsCartOpen = (boolean) => 
-createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean)
+export const setIsCartOpen = (boolean) =>
+    createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean)
 
 export const addItemToCart = (cartItems, productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd)
     return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems)
 }
 
-export const removeItemFromCart = (cartItems,cartItemToRemove) => {
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
     const newCartItems = removeCartItem(cartItems, cartItemToRemove)
     return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems)
 }
 
-export const clearItemFromCart = (cartItems,cartItemToClear) => {
+export const clearItemFromCart = (cartItems, cartItemToClear) => {
     const newCartItems = clearCartItem(cartItems, cartItemToClear)
     return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems)
 }
@@ -24,11 +24,11 @@ const addCartItem = (cartItems, productToAdd) => {
         (cartItem) => cartItem.id === productToAdd.id
     )
 
-    if(existingCartItem) {
-        return cartItems.map((cartItem) => 
-        cartItem.id === productToAdd.id
-        ? {...cartItem, quantity: cartItem.quantity +1}
-        :cartItem
+    if (existingCartItem) {
+        return cartItems.map((cartItem) =>
+            cartItem.id === productToAdd.id
+                ? {...cartItem, quantity: cartItem.quantity + 1}
+                : cartItem
         )
     }
 
@@ -40,17 +40,17 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
         (cartItem) => cartItem.id === cartItemToRemove.id
     )
 
-    if(existingCartItem.quantity === 1) {
+    if (existingCartItem.quantity === 1) {
         return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id)
     }
 
-    return cartItems.map((cartItem) => 
-    cartItem.id === cartItemToRemove.id
-    ? {...cartItem, quantity: cartItem.quantity - 1}
-    : cartItem
+    return cartItems.map((cartItem) =>
+        cartItem.id === cartItemToRemove.id
+            ? {...cartItem, quantity: cartItem.quantity - 1}
+            : cartItem
     )
 }
 
 
-const clearCartItem = (cartItems, cartItemToClear) => 
-cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id)
+const clearCartItem = (cartItems, cartItemToClear) =>
+    cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id)

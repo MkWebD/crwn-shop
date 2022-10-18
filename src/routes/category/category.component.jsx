@@ -1,8 +1,8 @@
 import {useParams} from 'react-router-dom'
-import {useState, useEffect, Fragment} from 'react'
+import {Fragment, useEffect, useState} from 'react'
 import {useSelector} from 'react-redux';
 
-import {selectCategoriesMap, selectCategoriesIsLoading} from '../../store/categories/category.selector';
+import {selectCategoriesIsLoading, selectCategoriesMap} from '../../store/categories/category.selector';
 import {CategoryContainer, Title} from './category.styles'
 import ProductCard from "../../components/product-card/product-card.component";
 import Spinner from "../../components/spinner/spinner.component";
